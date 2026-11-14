@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Дотепна кімчі: 5 страв із кімчі</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Golos+Text:wght@400;600;700&family=Unbounded:wght@700;800&display=swap">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+  --bg:#EEF2DC; --card:#FFFFFF; --ink:#1E1B18; --muted:#4F4941; --red:#B8291B; --red-bg:#C8301E; --on-red:#FFFFFF; --green:#2F6A2C; --line:#C9CFB4; --chip:#FFFFFF; --done:#7A7468;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#171A12; --card:#23271C; --ink:#EEF0E4; --muted:#B9BCA9; --red:#FF7A66; --red-bg:#C8301E; --on-red:#FFFFFF; --green:#9CCF86; --line:#3A3F2E; --chip:#23271C; --done:#8E9282;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#171A12; --card:#23271C; --ink:#EEF0E4; --muted:#B9BCA9; --red:#FF7A66; --red-bg:#C8301E; --on-red:#FFFFFF; --green:#9CCF86; --line:#3A3F2E; --chip:#23271C; --done:#8E9282;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Golos Text",Arial,sans-serif;font-size:17px;line-height:1.5}
+main{max-width:600px;margin:0 auto;padding:24px 16px 48px}
+.brand{font-family:"Caveat",cursive;font-size:26px;color:var(--red);margin:0;transform:rotate(-2deg);display:inline-block}
+.page-title{font-family:"Unbounded",Arial,sans-serif;font-weight:800;font-size:26px;line-height:1.15;margin:4px 0 6px;text-wrap:balance}
+.intro{margin:0 0 18px;color:var(--muted)}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 10px;margin:0 -2px 8px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;font:600 15px "Golos Text",Arial,sans-serif;color:var(--ink);background:var(--chip);border:1.5px solid var(--line);border-radius:999px;padding:10px 14px;min-height:44px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--red-bg);color:var(--on-red);border-color:var(--red-bg)}
+.chip:focus-visible,.step-btn:focus-visible,.stepper button:focus-visible{outline:3px solid var(--green);outline-offset:2px}
+h1{font-family:"Unbounded",Arial,sans-serif;font-weight:800;font-size:28px;line-height:1.1;margin:10px 0 6px;text-wrap:balance}
+.tag{margin:0 0 14px;font-weight:600;color:var(--red)}
+.meta{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:0 0 6px}
+.pill{font-family:"Unbounded",Arial,sans-serif;font-weight:700;font-size:13px;background:var(--red-bg);color:var(--on-red);border-radius:999px;padding:7px 12px}
+.stepper{display:flex;align-items:center;gap:4px;background:var(--card);border-radius:999px;padding:4px}
+.stepper button{width:44px;height:44px;border-radius:50%;border:0;background:var(--bg);color:var(--ink);font:700 22px "Golos Text",Arial,sans-serif;cursor:pointer}
+.stepper button:disabled{opacity:.35;cursor:default}
+.stepper output{min-width:96px;text-align:center;font-weight:700}
+h2{font-family:"Unbounded",Arial,sans-serif;font-weight:700;font-size:17px;margin:24px 0 10px}
+.card{background:var(--card);border-radius:12px;padding:4px 16px}
+.ing{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid var(--line)}
+.ing:last-child{border-bottom:0}
+.ing .q{font-weight:700;white-space:nowrap;text-align:right;font-variant-numeric:tabular-nums}
+ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.step-btn{width:100%;text-align:left;display:grid;grid-template-columns:32px 1fr;gap:12px;background:var(--card);color:var(--ink);border:0;border-radius:12px;padding:14px;font:inherit;cursor:pointer}
+.num{width:32px;height:32px;border-radius:50%;border:2px solid var(--red);color:var(--red);display:flex;align-items:center;justify-content:center;font:700 14px "Unbounded",Arial,sans-serif}
+.time{font:700 13px "Unbounded",Arial,sans-serif;color:var(--red);display:block;margin-bottom:2px}
+.step-btn.is-done .txt{color:var(--done);text-decoration:line-through}
+.step-btn.is-done .num{background:var(--green);border-color:var(--green);color:var(--on-red)}
+.hint{font-size:14px;color:var(--muted);margin:8px 0 0}
+.tip{margin-top:20px;padding:14px 16px;border:1.5px dashed var(--green);border-radius:12px}
+.tip strong{color:var(--green)}
+footer{margin-top:32px;font-size:14px;color:var(--muted);text-align:center}
+</style>
+</head>
+<body>
+<main>
+  <p class="brand">Дотепна кімчі радить</p>
+  <p class="page-title">Відкрили банку? Ось 5 страв із кімчі</p>
+  <p class="intro">Оберіть страву і кількість порцій: інгредієнти перерахуються самі.</p>
+
+  <nav class="chips" id="chips" aria-label="Рецепти"></nav>
+
+  <article id="recipe" aria-live="polite"></article>
+
+  <footer>Дотепна кімчі · власноруч від Власенка · Тільки для своїх!</footer>
+</main>
+
+<script>
+(function(){
+  var R = [
+    {id:'bokkymbap', short:'Боккимбап', title:'Кімчі-боккимбап', tag:'Смажений рис, що перетворює вчорашній рис на делікатес', time:'15 хв', base:2,
+     ing:[['Рис варений, учорашній',400,'г'],['Кімчі',150,'г'],['Сік із банки кімчі',2,'ст. л.'],['Ковбаса, шинка або бекон',100,'г'],['Цибуля ріпчаста',0.5,'шт.'],['Яйця',2,'шт.','whole'],['Олія соняшникова',2,'ст. л.'],['Соєвий соус',1,'ст. л.'],['Цукор',0.5,'ч. л.'],['Кунжутна олія (можна без)',1,'ч. л.'],['Зелена цибуля, кунжут',null,'для подачі']],
+     steps:[['2 хв','Дрібно наріжте кімчі. Цибулю й ковбасу наріжте кубиком близько 1 см.'],['3 хв','Розігрійте пательню з олією. Обсмажте цибулю й ковбасу до золотистого кольору.'],['3 хв','Додайте кімчі й смажте, доки краї не підрум’яняться.'],['4 хв','Всипте холодний рис, влийте сік кімчі й соєвий соус, додайте цукор. Смажте, розбиваючи грудочки, поки рис не стане ледь хрустким.'],['3 хв','Засмажте яйця-глазунью з рідким жовтком. Рис збризніть кунжутною олією, зверху яйце, зелена цибуля й кунжут.']],
+     tip:'<strong>Чому вчорашній рис?</strong> За ніч він підсихає і смажиться окремими зернятками. Свіжий рис злипнеться в кашу.'},
+    {id:'chige', short:'Чіґе', title:'Кімчі-чіґе', tag:'Гарячий гострий суп, що гріє краще за ковдру', time:'30 хв', base:2,
+     ing:[['Кімчі (кисліша навіть краще)',250,'г'],['Сік із банки кімчі',3,'ст. л.'],['Свинина: лопатка або грудинка',200,'г'],['Тофу або печериці',150,'г'],['Цибуля ріпчаста',0.5,'шт.'],['Часник',2,'зубч.','whole'],['Вода',600,'мл'],['Соєвий соус',1,'ст. л.'],['Цукор',0.5,'ч. л.'],['Олія',1,'ст. л.'],['Зелена цибуля',null,'для подачі']],
+     steps:[['5 хв','Наріжте свинину тонкими смужками, кімчі шматочками 2 см, цибулю півкільцями, тофу кубиками. Часник подавіть.'],['5 хв','У каструлі з олією обсмажте свинину, додайте кімчі й цибулю, смажте ще 3 хвилини.'],['15 хв','Влийте воду й сік кімчі, додайте часник, соєвий соус і цукор. Варіть під кришкою на слабкому вогні.'],['5 хв','Додайте тофу чи гриби й варіть ще 5 хвилин. Посипте зеленою цибулею, подавайте з рисом.']],
+     tip:'<strong>Найкраще чіґе</strong> виходить із кімчі, що постояла в холодильнику кілька тижнів і добре закисла.'},
+    {id:'chon', short:'Млинці', title:'Кімчі-джон', tag:'Хрусткі млинці, що зникають зі сковорідки першими', time:'20 хв', base:2,
+     ing:[['Кімчі',200,'г'],['Сік із банки кімчі',3,'ст. л.'],['Борошно пшеничне',100,'г'],['Холодна вода',100,'мл'],['Яйце',1,'шт.','whole'],['Зелена цибуля',30,'г'],['Олія для смаження',4,'ст. л.'],['Соєвий соус (для соусу)',2,'ст. л.'],['Оцет (для соусу)',1,'ст. л.']],
+     steps:[['3 хв','Дрібно наріжте кімчі й зелену цибулю.'],['3 хв','Змішайте борошно, холодну воду, яйце й сік кімчі до консистенції густої сметани. Вмішайте кімчі й цибулю.'],['12 хв','На добре розігрітій пательні з щедрою кількістю олії смажте тонкі млинці по 3 хвилини з кожного боку до хрусткої скоринки.'],['2 хв','Змішайте соєвий соус з оцтом і подавайте до млинців.']],
+     tip:'<strong>Секрет хрусткості</strong> у дуже холодній воді та гарячій олії. Млинці мають бути тонкими.'},
+    {id:'tost', short:'Тост', title:'Тост із кімчі та сиром', tag:'Сніданок, заради якого варто прокинутися', time:'10 хв', base:1,
+     ing:[['Хліб тостовий',2,'скибки','whole'],['Сир твердий: гауда чи моцарела',50,'г'],['Кімчі',50,'г'],['Вершкове масло',10,'г'],['Майонез (за бажанням)',1,'ч. л.']],
+     steps:[['2 хв','Віджміть кімчі від соку й поріжте. Хліб з одного боку змастіть маслом.'],['1 хв','Складіть маслом назовні: хліб, сир, кімчі, сир, хліб.'],['6 хв','Смажте на середньому вогні під кришкою по 3 хвилини з кожного боку, доки сир не розплавиться.']],
+     tip:'<strong>Сир з обох боків кімчі</strong> склеює тост, і начинка не випадає.'},
+    {id:'lokshyna', short:'Локшина', title:'Локшина з кімчі', tag:'Студентська локшина нарешті отримує диплом', time:'7 хв', base:1,
+     ing:[['Локшина швидкого приготування',1,'пачка','whole'],['Кімчі',80,'г'],['Сік із банки кімчі',1,'ст. л.'],['Яйце',1,'шт.','whole'],['Вода',500,'мл'],['Сир плавлений (за бажанням)',1,'скибка','whole'],['Зелена цибуля',null,'для подачі']],
+     steps:[['1 хв','Закип’ятіть воду, додайте приправу з пачки й кімчі.'],['3 хв','Покладіть локшину й варіть 2–3 хвилини.'],['2 хв','Вбийте яйце, не перемішуючи, і варіть ще хвилину. Влийте сік кімчі.'],['1 хв','Перекладіть у миску, зверху скибка сиру й зелена цибуля.']],
+     tip:'<strong>Кімчі варто класти на початку:</strong> так бульйон набирає її смак і кислинку.'}
+  ];
+
+  var state = { id: R[0].id, servings: {}, done: {} };
+  var chipsEl = document.getElementById('chips');
+  var recEl = document.getElementById('recipe');
+
+  function frac(x){
+    var w = Math.floor(x + 1e-9), r = Math.round((x - w) * 4) / 4;
+    if (r === 1) { w += 1; r = 0; }
+    var f = r === 0.25 ? '¼' : r === 0.5 ? '½' : r === 0.75 ? '¾' : '';
+    if (w === 0 && !f) return '¼';
+    return (w ? String(w) : '') + f;
+  }
+  function fmt(q, unit, kind){
+    if (q === null) return unit;
+    if (kind === 'whole') return Math.max(1, Math.round(q)) + ' ' + unit;
+    if (unit === 'г' || unit === 'мл') {
+      var v = q >= 100 ? Math.round(q / 10) * 10 : q >= 20 ? Math.round(q / 5) * 5 : Math.max(1, Math.round(q));
+      return v + ' ' + unit;
+    }
+    return frac(q) + ' ' + unit;
+  }
+  function porc(n){
+    var m10 = n % 10, m100 = n % 100;
+    if (m10 === 1 && m100 !== 11) return n + ' порція';
+    if (m10 >= 2 && m10 <= 4 && (m100 < 12 || m100 > 14)) return n + ' порції';
+    return n + ' порцій';
+  }
+  function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  function cur(){ for (var i = 0; i < R.length; i++) if (R[i].id === state.id) return R[i]; return R[0]; }
+
+  function renderChips(){
+    chipsEl.innerHTML = R.map(function(r){
+      return '<button type="button" class="chip" data-id="' + r.id + '" aria-pressed="' + (r.id === state.id) + '">' + esc(r.short) + '</button>';
+    }).join('');
+  }
+  function render(){
+    var r = cur();
+    var n = state.servings[r.id] || r.base;
+    var k = n / r.base;
+    var done = state.done[r.id] || {};
+    var ing = r.ing.map(function(i){
+      return '<div class="ing"><span>' + esc(i[0]) + '</span><span class="q">' + esc(fmt(i[1] === null ? null : i[1] * k, i[2], i[3])) + '</span></div>';
+    }).join('');
+    var steps = r.steps.map(function(s, idx){
+      var d = !!done[idx];
+      return '<li><button type="button" class="step-btn' + (d ? ' is-done' : '') + '" data-step="' + idx + '" aria-pressed="' + d + '"><span class="num">' + (d ? '✓' : (idx + 1)) + '</span><span class="txt"><span class="time">' + esc(s[0]) + '</span>' + esc(s[1]) + '</span></button></li>';
+    }).join('');
+    recEl.innerHTML =
+      '<h1>' + esc(r.title) + '</h1>' +
+      '<p class="tag">' + esc(r.tag) + '</p>' +
+      '<div class="meta"><span class="pill">' + esc(r.time) + '</span>' +
+      '<div class="stepper" role="group" aria-label="Кількість порцій">' +
+      '<button type="button" data-delta="-1" aria-label="Менше порцій"' + (n <= 1 ? ' disabled' : '') + '>−</button>' +
+      '<output aria-live="polite">' + porc(n) + '</output>' +
+      '<button type="button" data-delta="1" aria-label="Більше порцій"' + (n >= 12 ? ' disabled' : '') + '>+</button></div></div>' +
+      '<h2>Інгредієнти</h2><div class="card">' + ing + '</div>' +
+      '<h2>Приготування</h2><ol>' + steps + '</ol>' +
+      '<p class="hint">Торкніться кроку, щоб позначити його виконаним.</p>' +
+      '<p class="tip">' + r.tip + '</p>';
+  }
+
+  chipsEl.addEventListener('click', function(e){
+    var b = e.target.closest('.chip'); if (!b) return;
+    state.id = b.getAttribute('data-id');
+    if (location.hash !== '#' + state.id) history.replaceState(null, '', '#' + state.id);
+    renderChips(); render();
+  });
+  recEl.addEventListener('click', function(e){
+    var r = cur();
+    var d = e.target.closest('[data-delta]');
+    if (d) {
+      var n = (state.servings[r.id] || r.base) + parseInt(d.getAttribute('data-delta'), 10);
+      state.servings[r.id] = Math.min(12, Math.max(1, n));
+      render(); return;
+    }
+    var s = e.target.closest('[data-step]');
+    if (s) {
+      var i = s.getAttribute('data-step');
+      state.done[r.id] = state.done[r.id] || {};
+      state.done[r.id][i] = !state.done[r.id][i];
+      render();
+    }
+  });
+  function fromHash(){
+    var h = (location.hash || '').replace('#', '');
+    for (var i = 0; i < R.length; i++) if (R[i].id === h) { state.id = h; return; }
+  }
+  window.addEventListener('hashchange', function(){ fromHash(); renderChips(); render(); });
+  fromHash(); renderChips(); render();
+})();
+</script>
+</body>
+</html>
